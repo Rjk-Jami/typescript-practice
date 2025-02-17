@@ -98,3 +98,67 @@ class Player3 {
     console.log(`${this.name} from ${this.country} is playing!`);
   }
 }
+
+// interfaces
+// odject er stucture toiri kore
+// class er stucture toiri kore
+
+// generics
+
+const addId = <T>(obj: T) => {
+  // <T>
+  let id = Math.floor(Math.random() * 100);
+  return { ...obj, id };
+};
+
+let user = addId({
+  name: "jami",
+  age: 25,
+});
+
+const addId2 = <
+  T extends {
+    name: string;
+    age: number;
+  }
+>(
+  obj: T
+) => {
+  // <T>
+  let id = Math.floor(Math.random() * 100);
+  return { ...obj, id };
+};
+
+let user2 = addId2({
+  name: "jami",
+  age: 25,
+});
+
+
+// 
+
+interface APIResponse <T>{
+    status: number;
+    type: number;
+    data: T
+}
+const response1 : APIResponse<string> = {
+    status:200,
+    type: 1,
+    data: "test"
+}
+
+// ENUM
+enum response2Type { SUCCESS=200, FAILURE=500, UNAUTHENTICATED=401, FORBIDDEN=402}
+interface APIResponse2 <T>{
+    status: number;
+    type: response2Type;
+    data: T
+}
+const response2 : APIResponse2<string> = {
+    status:200,
+    type: response2Type.UNAUTHENTICATED,
+    data: "test"
+}
+
+console.log(response2)

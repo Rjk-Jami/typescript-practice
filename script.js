@@ -1,3 +1,14 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 // type Function
 var myNewFunc = function (a, b, c) {
     console.log("hello ".concat(a, " ").concat(b));
@@ -68,3 +79,44 @@ var Player3 = /** @class */ (function () {
     };
     return Player3;
 }());
+// interfaces
+// odject er stucture toiri kore
+// class er stucture toiri kore
+// generics
+var addId = function (obj) {
+    // <T>
+    var id = Math.floor(Math.random() * 100);
+    return __assign(__assign({}, obj), { id: id });
+};
+var user = addId({
+    name: "jami",
+    age: 25,
+});
+var addId2 = function (obj) {
+    // <T>
+    var id = Math.floor(Math.random() * 100);
+    return __assign(__assign({}, obj), { id: id });
+};
+var user2 = addId2({
+    name: "jami",
+    age: 25,
+});
+var response1 = {
+    status: 200,
+    type: 1,
+    data: "test"
+};
+// ENUM
+var response2Type;
+(function (response2Type) {
+    response2Type[response2Type["SUCCESS"] = 200] = "SUCCESS";
+    response2Type[response2Type["FAILURE"] = 500] = "FAILURE";
+    response2Type[response2Type["UNAUTHENTICATED"] = 401] = "UNAUTHENTICATED";
+    response2Type[response2Type["FORBIDDEN"] = 402] = "FORBIDDEN";
+})(response2Type || (response2Type = {}));
+var response2 = {
+    status: 200,
+    type: response2Type.UNAUTHENTICATED,
+    data: "test"
+};
+console.log(response2);
